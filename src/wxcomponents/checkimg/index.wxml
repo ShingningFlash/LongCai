@@ -1,0 +1,35 @@
+<view class="component-choosePhoto" wx:if="{{popWindow}}">
+    <view catchtap="closePopWindow" class="component-choosePhoto-container">
+        <view class="component-choosePhoto-content br20" wx:if="{{selType==0}}">
+            <view bindtap="chooseImg" class="component-choosePhotoItem" data-id="chooseMessageFile" wx:if="{{showMessageFile}}">
+                <text class="component-choosePhotoItem-text">微信聊天图片</text>
+            </view>
+            <view bindtap="chooseImg" class="component-choosePhotoItem" data-id="camera" wx:if="{{showCamera}}">
+                <text class="component-choosePhotoItem-text">拍照</text>
+            </view>
+            <view bindtap="chooseImg" class="component-choosePhotoItem" data-id="album" wx:if="{{showAlbum}}">
+                <text class="component-choosePhotoItem-text">手机相册</text>
+            </view>
+            <view class="component-choosePhotoItem" style="margin-top:20rpx;">
+                <text class="component-choosePhotoItem-text">取消</text>
+            </view>
+        </view>
+        <view class="component-choosePhoto-content br20" wx:else>
+            <view bindtap="chooseImg" class="component-choosePhotoItem" data-id="chooseMessageFileToComputer" wx:if="{{showMessageFile}}">
+                <text class="component-choosePhotoItem-text">微信聊天文件</text>
+            </view>
+            <view bindtap="chooseImg" class="component-choosePhotoItem" data-id="chooseMessageImageFileToComputer" wx:if="{{showMessageFile}}">
+                <text class="component-choosePhotoItem-text">微信聊天图片</text>
+            </view>
+            <view bindtap="chooseImg" class="component-choosePhotoItem" data-id="chooseBaidu">
+                <text class="component-choosePhotoItem-text">百度网盘文件</text>
+            </view>
+            <view bindtap="chooseImg" class="component-choosePhotoItem" data-id="album" wx:if="{{showAlbum}}">
+                <text class="component-choosePhotoItem-text">手机本地相册</text>
+            </view>
+            <view class="component-choosePhotoItem" style="margin-top:20rpx;">
+                <text class="component-choosePhotoItem-text">取消</text>
+            </view>
+        </view>
+    </view>
+</view>

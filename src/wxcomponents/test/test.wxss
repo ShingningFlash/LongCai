@@ -1,0 +1,221 @@
+page {
+    box-sizing: border-box;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 30rpx;
+}
+
+.mode-switch {
+    background: #f3f3f3;
+    border-radius: 12rpx;
+}
+
+.mode-switch,.mode-switch .mode {
+    display: flex;
+}
+
+.mode-switch .mode {
+    align-items: center;
+    border-radius: 8rpx;
+    color: #666;
+    font-size: 32rpx;
+    height: 68rpx;
+    justify-content: center;
+    margin: 8rpx;
+    width: 330rpx;
+}
+
+.mode-switch .mode.active {
+    background-color: #fff;
+    color: #333;
+    font-weight: 700;
+}
+
+.hint {
+    align-items: center;
+    background: #f0faff;
+    border-radius: 13rpx;
+    color: #333;
+    display: flex;
+    font-size: 26rpx;
+    margin-top: 28rpx;
+    padding: 18rpx 26rpx;
+}
+
+.hint image {
+    height: 28rpx;
+    width: 28rpx;
+}
+
+.hint .text {
+    align-items: center;
+    display: flex;
+    font-size: 25rpx;
+    margin-left: 15rpx;
+}
+
+.hint .rotate {
+    color: #333;
+    height: 44rpx;
+    width: 44rpx;
+}
+
+.workspace {
+    align-items: center;
+    background: #d7d7d7;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    margin-top: 28rpx;
+    padding-bottom: 32rpx;
+    padding-top: 32rpx;
+}
+
+.workspace .paper {
+    background-color: #fff;
+    box-sizing: border-box;
+    padding: 16rpx;
+    position: relative;
+}
+
+.workspace .paper .frame {
+    background-color: #f4f2f3;
+    box-sizing: border-box;
+    overflow: hidden;
+    position: absolute;
+}
+
+.workspace .template-img {
+    box-sizing: border-box;
+    position: absolute;
+    transform-origin: top left;
+}
+
+.workspace .addBox {
+    align-items: center;
+    background: #f3f3f3;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    width: 100%;
+}
+
+.workspace .addBox van-icon {
+    color: #24a2fd;
+    font-size: 60rpx;
+}
+
+.workspace .addBox text {
+    color: #333;
+    font-size: 28rpx;
+    margin-top: 27rpx;
+}
+
+.workspace .close {
+    background: #202020;
+    border-radius: 0 0 0 7rpx;
+    color: #fff;
+    height: 44rpx;
+    opacity: .6;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform-origin: top right;
+    width: 44rpx;
+}
+
+#img-list-container {
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+#img-list-container .freedom-img {
+    display: block;
+    overflow: visible;
+    position: absolute;
+    transform-origin: top left;
+}
+
+#img-list-container .freedom-img .rotate {
+    background: #202020;
+    border-radius: 50%;
+    bottom: -22rpx;
+    color: #fff;
+    height: 44rpx;
+    opacity: .6;
+    position: absolute;
+    right: -22rpx;
+    width: 44rpx;
+}
+
+#img-list-container .img-background {
+    background-color: #fff;
+    position: absolute;
+    transform-origin: top left;
+    z-index: -1;
+}
+
+.template-list {
+    margin-top: 60rpx;
+}
+
+.template-list>scroll-view .container {
+    box-sizing: border-box;
+    display: flex;
+    padding-bottom: 20rpx;
+    width: fit-content;
+}
+
+.template-list>scroll-view .container .template {
+    align-items: center;
+    border: 1px solid transparent;
+    display: flex;
+    flex-shrink: 0;
+    height: 140rpx;
+    justify-content: center;
+    margin-right: 26rpx;
+    position: relative;
+}
+
+.template-list>scroll-view .container .template .paper-thumb {
+    border: 1px solid #f3f3f3;
+    position: relative;
+}
+
+.template-list>scroll-view .container .template .paper-thumb.active {
+    border: 1px solid #24a2fd;
+}
+
+.template-list>scroll-view .container .template .paper-thumb .box {
+    background: #f3f3f3;
+    position: absolute;
+}
+
+.template-list>scroll-view .container .template .checkIcon {
+    bottom: 0;
+    height: 33rpx;
+    position: absolute;
+    right: 0;
+    width: 33rpx;
+}
+
+.btnGroup {
+    flex-direction: row;
+    margin-top: 10rpx;
+    padding-bottom: 40rpx;
+}
+
+.btnGroup>button:first-child {
+    margin-right: 16rpx;
+}
+
+.btnGroup>button:last-child {
+    margin-left: 16rpx;
+}
+
+.btnGroup>button[disabled] {
+    border: 1px solid #d7d7d7;
+}

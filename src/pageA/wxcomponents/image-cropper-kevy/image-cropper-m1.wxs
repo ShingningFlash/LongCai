@@ -1,0 +1,5 @@
+
+	var fix = function(px,wh) {
+		return px * (wh?wh:603) / 603;
+	}
+	module.exports.fix = fix;

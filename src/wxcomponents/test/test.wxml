@@ -1,0 +1,56 @@
+<view class="mode-switch">
+    <view bindtap="onModeSwitch" class="mode {{currentMode=='template'?'active':''}}" data-mode="template">模版排列</view>
+    <view bindtap="onModeSwitch" class="mode {{currentMode=='freedom'?'active':''}}" data-mode="freedom">自由排列</view>
+</view>
+<view class="hint">
+    <image src="/static/img/info.svg"></image>
+    <text class="text" wx:if="{{currentMode=='template'}}">可以点击图片进入详情，调整图片大小和角度</text>
+    <view class="text" wx:else>
+        可以点击 “
+        <van-icon class="rotate" name="replay"></van-icon>
+        ” 调整图片大小和角度
+    </view>
+</view>
+<view class="workspace" style="height:{{workspaceHeight}}px">
+    <view class="paper" style="width:{{viewWidth}}px; height:{{viewHeight}}px;">
+        <block wx:if="{{currentMode=='template'}}">
+            <view bindtap="{{imgList[index]?'onImageAdjust':''}}" class="frame" data-index="{{index}}" id="frame-{{index}}" style="{{isRotate?templateSize[curTemplateIdx].styleRotate[index]:item}}" wx:for="{{templateSize[curTemplateIdx].style}}" wx:key="index">
+                <image class="template-img" src="{{imgList[index]}}" style="{{imgStyle[index]}}" wx:if="{{imgList[index]}}"></image>
+                <view bindtap="onAddImg" class="addBox" wx:else></view>
+                <van-icon catchtap="onRemoveImg" class="close" data-index="{{index}}" name="cross" wx:if="{{imgList[index]}}"></van-icon>
+            </view>
+        </block>
+        <view catchtouchend="{{move.onTouchEnd}}" catchtouchmove="{{move.onTouchMove}}" catchtouchstart="{{move.onTouchStart}}" change:prop="{{move.onInitData}}" id="img-list-container" prop="{{initData}}" wx:else>
+            <image class="freedom-img" id="freedom-img-{{item.index}}" src="{{item.img}}" style="width:{{item.imgW}}px; height:{{item.imgH}}px;" wx:for="{{initData.list}}" wx:key="index">
+                <van-icon catchtouchend="{{move.onHandleTouchEnd}}" catchtouchmove="{{move.onHandleTouchMove}}" catchtouchstart="{{move.onHandleTouchStart}}" class="rotate" id="handle-{{item.index}}" name="replay"></van-icon>
+                <van-icon catchtouchstart="onRemoveImg" class="close" data-index="{{index}}" hidden="{{!item.img}}" id="close-{{item.index}}" name="cross"></van-icon>
+                <view class="img-background" id="img-background-{{item.index}}" wx:if="{{item.bgPadding}}"></view>
+            </image>
+        </view>
+    </view>
+</view>
+<view class="template-list" wx:if="{{currentMode=='template'}}">
+    <scroll-view enableFlex scrollX class="template-scroll" scrollY="false">
+        <view class="container">
+            <view class="template" wx:if="{{template.pos.length===imgList.length}}" wx:for="{{templateSize}}" wx:for-index="tempIdx" wx:for-item="template" wx:key="tempIdx">
+                <view bindtap="onTemplateClick" class="paper-thumb {{!isRotate&&curTemplateIdx==tempIdx?'active':''}}" data-index="{{tempIdx}}" data-is-rotate="{{false}}" style="width: {{template.width}}rpx; height:{{template.height}}rpx">
+                    <view class="box" style="{{item}}" wx:for="{{template.style}}" wx:for-index="styleIdx" wx:key="styleIdx"></view>
+                </view>
+                <image class="checkIcon" hidden="{{!(!isRotate&&curTemplateIdx==tempIdx)}}" mode="aspectFit" src="/static/img/cameraScanner/check.png"></image>
+            </view>
+            <view class="template" wx:if="{{template.posRotate.length===imgList.length}}" wx:for="{{templateSize}}" wx:for-index="tempIdx" wx:for-item="template" wx:key="tempIdx">
+                <view bindtap="onTemplateClick" class="paper-thumb {{isRotate&&curTemplateIdx==tempIdx?'active':''}}" data-index="{{tempIdx}}" data-is-rotate="{{true}}" style="width: {{template.height}}rpx; height:{{template.width}}rpx">
+                    <view class="box" style="{{item}}" wx:for="{{template.styleRotate}}" wx:for-index="styleIdx" wx:key="styleIdx"></view>
+                    <image class="checkIcon" hidden="{{!(isRotate&&curTemplateIdx===tempIdx)}}" mode="aspectFit" src="/static/img/cameraScanner/check.png"></image>
+                </view>
+            </view>
+        </view>
+    </scroll-view>
+</view>
+<view class="btnGroup">
+    <button bindtap="onAddMultiImg" class="btnPlain" hoverClass="btnHover" wx:if="{{imgCount<9}}">上传图片</button>
+    <button disabled class="btnPlain" wx:else>最多9张图片</button>
+    <button bindtap="onNext" class="btnPrimary" hoverClass="btnHover">下一步</button>
+</view>
+<pic-select-popup bindafterread="onAfterRead" bindcancel="onCancel" count="{{maxCount}}" isOriginal="{{false}}" show="{{isShow}}"></pic-select-popup>
+<!-- <wxs module="move" src="imgAdjust/move.wxs" /> -->
